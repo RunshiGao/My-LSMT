@@ -8,6 +8,7 @@ class Node:
     # level is the level it will be created at
     def __init__(self, key, level):
         self.key = key
+        self.level = level
         # forward is the pointer pointing to the next nodes
         self.forward = [None] * (level + 1)
 
@@ -68,6 +69,7 @@ class SkipList:
             for i in range(rlevel + 1):
                 n.forward[i] = update[i].forward[i]
                 update[i].forward[i] = n
+        print("Sucessfully inserted key:" + str(key))
     # search the node containing the key, return True if found otherwise False
     def search(self, key):
         # basically the same logic as insertion, insertion is just first search to the right place then insert
@@ -76,7 +78,9 @@ class SkipList:
         for i in range(self.level, -1, -1):
             while current.forward[i] and current.forward[i].key < key:
                 current = current.forward[i]
+                print("level " + str(current.level) + ":" + str(current.key))
         current = current.forward[0]
+        print("level " + str(current.level) + ":" + str(current.key))
         if current and current.key == key:
             return True
         return False
