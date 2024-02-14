@@ -5,6 +5,7 @@ def main():
         ['Commands: ', 'Explanation'],
         ['put {key}', 'Store the key into the DB'],
         ['get {key}', 'Check if the key exist. Returns False if it doesnt exist'],
+        ['file {filename}', 'Input keys from file']
         ['\n\tConfiguration:', ''],
         ['help', 'Print the usage message'],
         ['exit', 'Quit the program.']
