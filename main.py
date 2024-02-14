@@ -10,13 +10,11 @@ def main():
         ['exit', 'Quit the program.']
     ]
 
-
-    
-    
     db = LSMTree()
-
+    # the interface
     while True:
         print('\nEnter a command below. Type "help" to see a list of commands.')
+        # get the user's command
         cmd = input('$ ').lower().split(' ')
         if cmd[0] == 'put':
             key = cmd[1]
@@ -27,6 +25,10 @@ def main():
             found = db.get(key)
             msg = "Found key " + key if found else "Key not found"
             print(msg)
+        elif cmd[0] == "file":
+            filename = cmd[1]
+            db.insert_keys_from_file(filename)
+            print("Inserted keys from the file:"+filename)
         elif cmd[0] == 'print':
             db.print()
         elif cmd[0] == 'help':
